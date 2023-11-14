@@ -73,6 +73,7 @@ else{
         <small id="phoneHelp" class="form-text text-muted">We'll never share your contectnumber with anyone else.</small>
 </div>
 
+    <a href="viewrecords.php" class="btn btn-default">Back to List</a>
     <button type="submit" name="submit" class="btn btn-success btn-block">Save Changes</button>
 </form>
   <?php }?>
