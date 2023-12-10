@@ -2,6 +2,7 @@
 $title = 'Success';
 require_once 'includes/header.php';
 require_once 'db/conn.php';
+require_once 'sendemail.php';
 
 if(isset($_POST['submit'])){
     $fname = $_POST['firstname'];
@@ -12,9 +13,10 @@ if(isset($_POST['submit'])){
     $specialty = $_POST['specialty'];
 
     $isSuccess = $crud->insertAttendees($fname, $lname, $dob, $email, $contact, $specialty);
-
+    $specialtyName = $crud->getSpecialtyByid($specialty);
 
     if($isSuccess){
+        SendEmail::SendMail($email, 'Welcome to IT Conference 2023', 'You have successfully registered for this year\'s IT Conference');
         include 'includes/successmessage.php';
 
     }
@@ -67,7 +69,7 @@ if(isset($_POST['submit'])){
   </h5>
 
     <h6 class="card-subtitle mb-2 text-muted">
-        <?php echo $_POST['specialty']; ?> 
+        <?php echo $specialtyName['name']; ?> 
 </h6>
 
     <p class="card-text">
