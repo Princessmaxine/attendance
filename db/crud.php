@@ -5,10 +5,10 @@ class crud{
     function __construct($conn){
         $this->db = $conn;
 }
-public function insertAttendees($fname, $lname, $dob, $email, $contact, $specialty){
+public function insertAttendees($fname, $lname, $dob, $email,$contact,$specialty,$avatar_path){
     try {
-        $sql = "INSERT INTO attendee (firstname,lastname,dateofbirth,emailaddress,contactnumber,specialty_id ) 
-        VALUES(:fname, :lname, :dob, :email, :contact, :specialty)";
+        $sql = "INSERT INTO attendee (firstname,lastname,dateofbirth,emailaddress,contactnumber,specialty_id,avatar_path ) 
+        VALUES(:fname, :lname, :dob, :email, :contact, :specialty,:avatar_path)";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(":fname", $fname); 
         $stmt->bindParam(":lname", $lname);
